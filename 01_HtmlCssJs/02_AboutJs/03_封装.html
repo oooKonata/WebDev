@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            //私有属性
+            #name
+            #age
+            #gender
+            constructor(name, age, gender) {
+                this.#name = name
+                this.#age = age
+                this.#gender = gender
+            }
+            //getter,setter函数访问私有属性
+            getName() {
+                return this.#name
+            }
+            setName(name) {
+                this.#name = name
+            }
+
+            getAge() {
+                return this.#age
+            }
+            setAge(age) {
+                //设置setter条件
+                if (age > 0) {
+                    this.#age = age
+                }
+            }
+        }
+
+        const p1 = new Person("孙悟空", 18 , "男")
+        p1.setName("唐僧")
+        console.log(p1.getName());
+
+        p1.setAge(20)
+        console.log(p1);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

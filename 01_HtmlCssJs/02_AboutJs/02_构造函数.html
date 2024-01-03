@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person1 {
+            name = "孙悟空"
+            age = 18
+            address = "花果山"
+        }
+
+        class Person2 {
+            //类用new创建实例对象时调用constructor
+            //构造函数的作用：初始化成员变量
+            constructor(name, age, address) {
+                //this是创建的实例对象
+                this.name = name
+                this.age = age
+                this.address = address
+            }
+        }
+
+        const p1 = new Person1("孙悟空", 18, "花果山")
+        const p2 = new Person1("猪八戒", 24, "高老庄")
+        const p3 = new Person1("沙悟净", 32, "流沙河")
+        
+        console.log(p1)
+        console.log(p2)
+        console.log(p3)
+        
+        const p4 = new Person2("孙悟空", 18, "花果山")
+        const p5 = new Person2("猪八戒", 24, "高老庄")
+        const p6 = new Person2("沙悟净", 32, "流沙河")
+
+
+        console.log(p4)
+        console.log(p5)
+        console.log(p6)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

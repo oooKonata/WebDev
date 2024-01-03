@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .leftfix {
+            float: left;
+        }
+        .rightfix {
+            float: right;
+        }
+        .claerfix {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .wrapper {
+            width: 600px;
+            height: 600px;
+            background-color: skyblue;
+            position: relative;
+        }
+        .wrapper>div {
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+        .wrapper .box1 {
+            background-color: green;
+        }
+        .wrapper .box2 {
+            background-color: red;
+        }
+        .wrapper .box3 {
+            background-color: blue;
+        }
+        .wrapper .box4 {
+            background-color: orange;
+        }
+        .wrapper .box4 {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" .clearfix>
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
+</body>
+</html>

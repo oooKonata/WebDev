@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #logo {
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 50%;
+            padding: 0.6rem;
+            margin-bottom: 1.4rem;
+        }
+        #logo>img {
+            height: 64px;
+            width: 64px;
+            vertical-align: bottom;
+            
+        }
+        .loading {
+            max-width: 50%;
+            line-height: 1.4;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #222;
+        }
+        .loading__author {
+            display: block;
+            font-weight: normal;
+            font-size: 0.9rem;
+            color: rgba(189, 189, 189, 1);
+            margin: 0.6rem 0 2rem;
+        }
+        .loading__anim {
+            width: 35px;
+            height: 35px;
+            display: inline-block;
+            border: 5px solid rgba(189, 189, 189, 0.25);
+            border-left-color: rgba(3, 155, 229, 1);
+            border-top-color: rgba(3, 155, 229, 1);
+            border-radius: 50%;
+            animation: rotate_loading 600ms infinite linear;
+        }
+
+        @keyframes rotate_loading {
+            from {
+
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <img src="./imgs/logo_xhdl.png" alt="星和动力logo">
+    </div>
+    <div class="loading">
+        星和动力小程序
+        <span class="loading__author">@Copyright HePower</span>
+        <span class="loading__anim"></span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <!-- <ul>
+            <li class="box1">oooKonata</li>
+        </ul> -->
+    </div>
+    <script>
+        // const myBox = document.getElementsByClassName("box")
+        // console.log(myBox[0])
+        const myBox = document.querySelector(".box")
+        let classValue = "box1"
+        let Value = "oooKonata"
+        let htmlStr = `
+        <ul>
+            <li class=${classValue}>${Value}</li>
+        </ul>
+        `
+        console.log(htmlStr)
+        
+        // myBox[0].innerHTML = htmlStr
+        myBox.innerHTML = htmlStr
+    </script>
+</body>
+</html>

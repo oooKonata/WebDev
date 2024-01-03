@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function count() {
+            let num = 0
+            console.log('函数执行了～', num)
+            /* 
+            function fn() {
+                num++
+                console.log('函数执行了@' ,num)
+            }
+            return fn
+            */
+           return () => {
+                num++
+                console.log('函数执行了@' ,num)
+           }
+        }
+
+        // console.log(count())
+        let addNum = count()
+        addNum()
+        addNum()
+        addNum()
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

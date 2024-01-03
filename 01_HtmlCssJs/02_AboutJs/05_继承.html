@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Animal {
+            #name
+            #age
+            test = function() {
+                
+            }
+            constructor(name, age) {
+                this.#name = name
+                this.#age = age
+            }
+            sayHello() {
+                console.log('动物叫～～～')
+            }
+        }
+        class Dog extends Animal {
+            #hobby
+            constructor(name, age, gender, hobby) {
+                //调用super()指明继承父类的属性，方法直接继承，可重写方法
+                super(name, age)
+                this.gender = gender
+                this.#hobby = hobby
+            }
+            sayhello2() {
+                console.log('汪汪～～～');
+            }
+        }
+
+        const dog = new Dog('旺财', 2, 'boy', 'apple')
+        console.log(dog);
+        dog.sayHello()
+        dog.sayhello2()
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

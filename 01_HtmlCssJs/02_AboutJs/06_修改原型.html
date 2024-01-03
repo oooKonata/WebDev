@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+
+            run() {
+                console.log("跑步～～～");
+            }
+        }
+
+        const p1 = new Person()
+
+        //类的prototype属性可以访问类的实例对象的原型
+        //修改原型：通过类的prototype属性去修改，无需创建实例，修改后所有实例均能使用该方法，不要赋值修改，那是覆盖
+        console.log(Person.prototype)
+        console.log(p1.__proto__ )
+        console.log(p1.__proto__ === Person.prototype)
+        //修改原型
+        Person.prototype.eat = function() {
+            console.log("吃饭～～～")
+        }
+        Person.prototype.sleep = () => {
+            console.log("睡觉～～～")
+            
+        }
+        p1.eat()
+        p1.sleep()
+        console.log(Person.prototype) 
+        console.log(Person)
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

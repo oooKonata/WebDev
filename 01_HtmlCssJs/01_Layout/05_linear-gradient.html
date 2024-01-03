@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            overflow: hidden;
+        }
+
+        .wrapper>div {
+            margin-top: 20px;
+        }
+
+        .box1 {
+            margin: 0 auto;
+            width: 600px;
+            height: 100px;
+            background: linear-gradient(45deg, red, blue);
+        }
+
+        .box2 {
+            margin: 0 auto;
+            width: 600px;
+            height: 100px;
+            background: linear-gradient(135deg, orange 60%, cyan);
+        }
+
+        .box3 {
+            margin: 0 auto;
+            width: 600px;
+            height: 100px;
+            background: linear-gradient(
+                to right,
+                    red 20%,
+                    orange 20% 40%,
+                    yellow 40% 60%,
+                    green 60% 80%,
+                    blue 80%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+</body>
+
+</html>

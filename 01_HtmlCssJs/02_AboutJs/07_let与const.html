@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = []
+        //变量提升相当于这里声明了一个var a
+        //var a
+        //for循环执行完之后，a等于10,后续数组元素调用函数时返回值a固定为10了
+        for (var a = 0; a < 10; a++) {
+            arr[a] = function() {
+                return a
+            }
+            console.log(a)
+        }
+
+        // 这里能打印a
+        console.log("a的值为", a)
+        
+        console.log(arr[4]()) //10
+        console.log(arr[5]()) //10
+        console.log(arr[6]()) //10
+        console.log(arr)
+        
+        
+
+        const myArr = []
+        for (let i = 0; i < 10; i++) {
+            myArr[i] = function () {
+                return i
+            }
+            console.log(i)
+            
+        }
+
+        // 这里没发打印i,因为i不在全局作用域中
+        // console.log(i) 
+        
+        console.log(myArr[6]()) //6
+        console.log(myArr)
+        
+    </script>
+</body>
+
+</html>

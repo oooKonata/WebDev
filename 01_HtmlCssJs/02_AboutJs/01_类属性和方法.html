@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            // 实例属性，实例访问
+            name = "Jack"
+            age = 18
+            //实例方法，实例调用
+            // sayHello = function() {
+            //     console.log('Hello, my name is' + ' ' + this.name);
+            // }
+            sayHello() {
+                console.log('Hello, my name is' + ' ' + this.name)
+            }
+
+            //静态属性，类名访问
+            static address = "Wuhan"
+            //静态方法，类名调用
+            // static showAddress = function() {
+            //     console.log("Now, I'm in" + ' ' + this.address);
+            // }
+            static showAddress() {
+                console.log("Now, I'm in" + ' ' + this.address);
+            }
+        }
+
+        const p1 = new Person()
+        const p2 = new Person()
+
+        console.log(p1);
+        console.log(p2);
+    </script>
+</body>
+
+</html>

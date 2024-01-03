@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            #name
+            #age
+            constructor(name, age) {
+                this.#name = name
+                this.#age = age
+            }
+            getName() {
+                return this.#name
+            }
+            setName(name) {
+                this.#name = name
+            }
+        }
+        
+        class Dog {
+            #name
+            #age
+            constructor(name, age) {
+                this.#name = name
+                this.#age = age
+            }
+            getName() {
+                return this.#name
+            }
+            setName(name) {
+                this.#name = name
+            }
+        }
+
+        const p1 = new Person("张三", 18)
+        const d1 = new Dog("旺财", 2)
+
+        console.log(p1, d1);
+
+        //多态，不检查对象类型，有相应的属性或函数即可
+        function test(obj) {
+            console.log(obj.getName())
+        }
+        
+        test(p1)
+        test(d1)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
