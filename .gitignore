@@ -1,2 +1,4 @@
 .vscode
 .DS_Store
+# 忽略任何目录下的node_modules
+**/node_modules

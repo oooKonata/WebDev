@@ -1,0 +1,14 @@
+{
+  "name": "my_npm-project",
+  "version": "1.0.0",
+  "description": "学习npm包管理器",
+  "main": "01_npm.js",
+  "scripts": {
+    "test": "index.js"
+  },
+  "author": "oooKonata",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
