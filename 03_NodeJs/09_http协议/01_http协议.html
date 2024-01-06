@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_http协议</title>
+</head>
+<body>
+    <form method="get" action="#">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>提交</button>
+    </form>
+</body>
+</html>
+
+<!-- 
+    HTTP协议是应用层协议
+        - 用来规定客户端与服务端之间通信的报文格式
+        - 报文？（message）
+            - 浏览器和服务器之间通信是基于请求和响应的
+                - 浏览器向服务器发送请求（request）
+                - 服务器向浏览器返回响应（response）
+            - HTTP协议就是对报文格式的规定
+
+        - 请求报文
+            - 格式
+                请求首行
+                    - GET index.html?username=oooKonata&password=123456 HTTP/1.1
+                        第一部分 请求方式：GET
+                            - GET请求主要用来向服务器请求资源
+                            - POST请求主要用来向服务器发送数据
+                        第二部分 请求资源路径：index.html?username=oooKonata&password=123456
+                            - ？后面的内容叫做查询字符串（名值对形式，多个名值对用 & 连接）
+                            - GET请求通过查询字符串给服务器发送数据
+                                - GET请求没有请求体
+                                - 查询字符串会在浏览器地址栏显示，安全性较差
+                                - url地址有长度限制，所以get请求无法发送大数据
+                                
+                            - POST请求通过请求体给服务器发送数据
+                                - chrome中通过 载荷 查看
+                                - 请求体大小没有限制，可以发送任意大小数据
+
+                            - 向服务器发送数据，能用POST尽量用POST
+                        第一部分 协议版本：HTTP/1.1
+                请求头
+                    - 请求头是名值对结构，告诉服务器浏览器的信息
+                空行
+                    - 分隔请求头和请求体
+                请求体
+                    -POST请求通过请求体发送数据
+        - 响应报文
+            - 格式
+                响应首行
+                    - HTTP/1.1 200 OK
+                        200 响应状态码
+                        OK 响应状态码的描述
+                            - 响应状态码规则
+                                1xx 请求处理中
+                                2xx 成功
+                                3xx 请求重定向
+                                4xx 客户端错误
+                                5xx 服务端错误
+                响应头
+                    - 响应头是名值对结构，告诉浏览器响应的信息
+                空行
+                    - 分隔响应头和响应体
+                响应体
+                    - 服务器返回给客户端的内容
+ -->
