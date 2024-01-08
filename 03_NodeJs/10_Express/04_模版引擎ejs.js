@@ -4,6 +4,28 @@ const path = require("node:path")
 // 创建服务器实例
 const app = express()
 
+// 创建一个学生数组
+const STU_ARR = [
+    {
+        name: "孙悟空",
+        age: "18",
+        gender: "男",
+        address: "花果山"
+    },
+    {
+        name: "猪八戒",
+        age: "28",
+        gender: "男",
+        address: "高老庄"
+    },
+    {
+        name: "沙悟净",
+        age: "38",
+        gender: "男",
+        address: "流沙河"
+    }
+]
+
 // 配置模版引擎ejs
 app.set("view engine", "ejs")
 // 配置模版引擎路径（默认是当前项目下的views，但是执行方式不同可能导致路径出错，可以设置为绝对路径）
@@ -31,7 +53,7 @@ app.get("/students", (req, res) => {
 
     // res.render()将模版引擎渲染成html，浏览器才能使用
     // res.render()可以用第二个参数传递对象，在模版中可以直接访问该对象
-    res.render("students", { name: "oooKonata", age: 18 })
+    res.render("students", { stus: STU_ARR })
 })
 
 // 配置错误处理中间件
