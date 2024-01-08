@@ -1,30 +1,14 @@
 // 引入express服务器框架
 const express = require("express")
+const { readFile } = require("node:fs")
 const path = require("node:path")
+const fs = require("node:fs/promises")
+
 // 创建服务器实例
 const app = express()
 
-// 创建一个学生数组
-const STU_ARR = [
-    {
-        name: "孙悟空",
-        age: "18",
-        gender: "男",
-        address: "花果山"
-    },
-    {
-        name: "猪八戒",
-        age: "28",
-        gender: "男",
-        address: "高老庄"
-    },
-    {
-        name: "沙悟净",
-        age: "38",
-        gender: "男",
-        address: "流沙河"
-    }
-]
+// 读取json数据
+const STU_ARR = require("./data/students.json")
 
 // 配置模版引擎ejs
 app.set("view engine", "ejs")
@@ -54,6 +38,35 @@ app.get("/students", (req, res) => {
     // res.render()将模版引擎渲染成html，浏览器才能使用
     // res.render()可以用第二个参数传递对象，在模版中可以直接访问该对象
     res.render("students", { stus: STU_ARR })
+})
+
+// 创建一个添加学生的路由
+app.post("/add-student", (req, res) => {
+    // 1、生成id，获取STU.ARR数组最后一个元素的id加1
+    const id = STU_ARR.at(-1).id + 1
+    // 2、获取用户填写的信息
+    const newStu = {
+        id,
+        name: req.body.name,
+        age: +req.body.age,
+        gender: req.body.gender,
+        address: req.body.address
+    }
+    // 3、验证用户信息（略）
+
+    // 4、将用户信息添加到数组中
+    STU_ARR.push(newStu)
+    // 5、将新数据写入json文件中（数据持久化）
+    fs.writeFile(
+        path.resolve(__dirname, "./data/students.json"),
+        JSON.stringify(STU_ARR)
+    ).then(() => {
+        // 6、重定向，让浏览器向另一个地址发起一次请求
+        res.redirect("/students")
+    }).catch((err) => {
+        console.log("出错了～", err)
+    })
+    
 })
 
 // 配置错误处理中间件
