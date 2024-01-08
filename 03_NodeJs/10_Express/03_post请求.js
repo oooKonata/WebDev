@@ -22,6 +22,13 @@ app.post("/login", (req, res) => {
     }
 })
 
+// 设置错误处理中间件，前面所有路由都不匹配时执行
+// 不配置路径，就是根目录
+app.use((req, res => {
+    res.status(404)
+    res.send("<h1>未找到页面</h1>")
+}))
+
 // 设置监听端口，启动服务器
 app.listen(3000, () => {
     console.log("服务器启动了～")
