@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>学生列表增删改查</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #333;
+            font-size: 1rem;
+            padding: 10px;
+            text-align: center;
+        }
+        caption {
+            font-size: 1.2rem;
+            line-height: 2.4;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <!-- <h1>Hello EJS!</h1> -->
@@ -16,6 +32,7 @@
                 <th>年龄</th>
                 <th>性别</th>
                 <th>住址</th>
+                <th>操作</th>
             </tr>
         </thead>
         <tbody>
@@ -26,16 +43,21 @@
                     <td><%= stu.age %></td>
                     <td><%= stu.gender %></td>
                     <td><%= stu.address %></td>
+                    <td>
+                        <a href="#">删除</a>
+                        <a href="#">修改</a>
+                    </td>
                 </tr>
             <% } %>
         </tbody>
     </table>
-    <form action="#" method="post">
+    <br>
+    <form action="/add-student" method="post">
         <div>
             姓名：<input type="text" name="name">
         </div>
         <div>
-            性别：<input type="radio" name="gender" value="男">男
+            性别：<input type="radio" name="gender" value="男" checked>男
             <input type="radio" name="gender" value="女">女
         </div>
         <div>
@@ -43,6 +65,9 @@
         </div>
         <div>
             住址：<input type="text" name="address">
+        </div>
+        <div>
+            <button>添加</button>
         </div>
     </form>
 </body>

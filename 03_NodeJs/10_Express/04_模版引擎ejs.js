@@ -1,6 +1,5 @@
 // 引入express服务器框架
 const express = require("express")
-const { readFile } = require("node:fs")
 const path = require("node:path")
 const fs = require("node:fs/promises")
 
