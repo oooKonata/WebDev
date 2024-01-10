@@ -63,19 +63,39 @@ app.get("/delete-student", (req, res) => {
         res.redirect("/students-manage")
     }).catch((err) => {
         console.log("删除失败！", err)
-    })
+    })  
 })
 
-// 修改学生信息路由（点击修改显示一个修改信息的页面）
-app.get("/update-student", (req, res) => {
+// 回显修改学生信息路由（点击修改显示一个修改信息的页面）
+app.get("/modify-student", (req, res) => {
     // 获取要修改学生信息的id
     const id = +req.query.id
-    // 获取要修改学生信息的信息
-    const updateStu = STU_ARR.find(stu => stu.id === id)
-    console.log("修改信息", updateStu)
+    // 获取要修改学生信息的信息，回显到modify-student.ejs
+    const modifyStu = STU_ARR.find(stu => stu.id === id)
+    // console.log("修改信息", modifyStu)
 
-    res.render("update-student", {updateStu})
-    
+    res.render("modify-student", {modifyStu})
+})
+
+// 更新修改学生信息后的学生列表
+app.post("/update-student", (req, res) => {
+    // 获取修改学生信息
+    const { id, name, age, gender, address } = req.body
+    // 根据id修改学生对象属性值
+    const modifyStu = STU_ARR.find(stu => stu.id == id)
+    modifyStu.name = name
+    modifyStu.age = age
+    modifyStu.gender = gender
+    modifyStu.address = address
+    // 修改后学生信息写入到json文件
+    fs.writeFile(
+        path.resolve(__dirname, "./data/students.json"),
+        JSON.stringify(modifyStu)
+    ).then(() => {
+        res.redirect("/students-manage")
+    }).catch((err) => {
+        console.log("修改失败!", err)
+    })
 })
 
 // 全局错误处理
