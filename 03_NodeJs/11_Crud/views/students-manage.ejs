@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学生列表增删改查</title>
+    <title>学生信息管理</title>
     <style>
         table {
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #333;
             font-size: 1rem;
             padding: 10px;
             text-align: center;
         }
+
         caption {
             font-size: 1.2rem;
             line-height: 2.4;
@@ -21,6 +25,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- <h1>Hello EJS!</h1> -->
     <table>
@@ -44,8 +49,8 @@
                     <td><%= stu.gender %></td>
                     <td><%= stu.address %></td>
                     <td>
-                        <a href="#">删除</a>
-                        <a href="#">修改</a>
+                        <a href="/delete-student?id=<%= stu.id %>">删除</a>
+                        <a href="/update-student?id=<%= stu.id %>">修改</a>
                     </td>
                 </tr>
             <% } %>
@@ -71,4 +76,5 @@
         </div>
     </form>
 </body>
+
 </html>

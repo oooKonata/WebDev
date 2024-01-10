@@ -12,8 +12,7 @@ app.set("views", path.resolve(__dirname, "views"))
 app.use(express.urlencoded())
 
 // 读取学生数据（JSON）
-const STU_ARR = require("./data/students.json")
-console.log(STU_ARR)
+let STU_ARR = require("./data/students.json")
 
 // 配置学生管理路由
 app.get("/students-manage", (req, res) => {
@@ -21,11 +20,10 @@ app.get("/students-manage", (req, res) => {
     res.render("students-manage", { stus: STU_ARR })
 })
 
-// 添加学生路由
+// 添加学生信息路由
 app.post("/add-student", (req, res) => {
-    console.log("@@@", req.body)
-    // 1、生成id
-    const id = STU_ARR.at(-1).id + 1
+    // 1、生成id，判断学生数组是否为空，数组为空，直接将id设为1
+    const id = STU_ARR.at(-1) ? STU_ARR.at(-1).id + 1 : 1
     // 2、获取用户填写的新学生信息
     const newStu = {
         id,
@@ -34,7 +32,7 @@ app.post("/add-student", (req, res) => {
         gender: req.body.gender,
         address: req.body.address
     }
-    console.log(newStu.age)
+    console.log("添加学生", newStu)
     // 3、验证用户信息（略）
     // 4、新学生信息添加到学生数组
     STU_ARR.push(newStu)
@@ -50,21 +48,33 @@ app.post("/add-student", (req, res) => {
     })
 })
 
-// 删除学生路由
-app.post("/delete-student", (req, res) => {
-    // 获取要删除信息的学生的id
-
-
-
-
+// 删除学生信息路由
+app.get("/delete-student", (req, res) => {
+    // 1、获取要删除信息的学生的id
+    const id = +req.query.id
+    // 2、删除id学生信息，并获取新的（过滤后的）学生数组
+    STU_ARR = STU_ARR.filter(stu => stu.id !== id)
+    // 3、将新数组写入json文件
+    fs.writeFile(
+        path.resolve(__dirname, "./data/students.json"),
+        JSON.stringify(STU_ARR)
+    ).then(() => {
+        // 4、重定向到学生管理列表
+        res.redirect("/students-manage")
+    }).catch((err) => {
+        console.log("删除失败！", err)
+    })
 })
 
-// 修改学生路由
-app.post("/update-student", (req, res) => {
-    // 获取要修改信息的学生的id
+// 修改学生信息路由（点击修改显示一个修改信息的页面）
+app.get("/update-student", (req, res) => {
+    // 获取要修改学生信息的id
+    const id = +req.query.id
+    // 获取要修改学生信息的信息
+    const updateStu = STU_ARR.find(stu => stu.id === id)
+    console.log("修改信息", updateStu)
 
-
-
+    res.render("update-student", {updateStu})
     
 })
 
