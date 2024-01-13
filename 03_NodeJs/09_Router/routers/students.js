@@ -10,7 +10,13 @@ let STU_ARR = require("../data/students.json")
 
 // 学生管理列表路由
 router.get("/manage", (req, res) => {
-    res.render("students-manage", {stus: STU_ARR})
+    //如果cookie里面有username，就能渲染
+    // 也就是说，地址栏直接写路由地址没发访问，因为cookie是登录成功了才会包含username
+    if (req.cookies.username) {
+        res.render("students-manage", { stus: STU_ARR })
+    } else {
+        res.redirect("/")
+    }
 })
 
 // 添加学生路由
@@ -48,7 +54,7 @@ router.get("/delete", (req, res, next) => {
         res.redirect("/students/manage")
     }).catch((err) => {
         console.log("删除失败！", err)
-    })  
+    })
 })
 
 // 修改学生路由
@@ -59,7 +65,7 @@ router.get("/modify", (req, res) => {
     const modifyStu = STU_ARR.find(stu => stu.id === id)
     // console.log("修改信息", modifyStu)
 
-    res.render("modify-student", {modifyStu})
+    res.render("modify-student", { modifyStu })
 })
 
 // 更新修改学生信息后的学生列表
