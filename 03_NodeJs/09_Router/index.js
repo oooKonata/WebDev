@@ -39,7 +39,7 @@ app.post("/login", (req, res) => {
                         npm i cookie-parser
                     2、引入
                         const cookieParser = require("cookie-parser")
-                    3、设置中间件
+                    3、使用-设置中间件
                         app.use(cookieParser())
                 - cookie有效期（配置对象）
                     - 默认有效期是一次会话（浏览器关闭会话结束）
