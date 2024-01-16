@@ -13,8 +13,22 @@ const STU_ARR = [
     { id: "3", name: "沙悟净", age: 38, gender: "男", address: "流沙河" }
 ]
 
+// 允许跨域请求的配置
+app.use((req, res, next) => {
+    // 允许任何跨域请求的响应头
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    // 允许指定跨域请求
+    // res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500")
+    // 允许的请求方式
+    // res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+    // 允许传递的请求头
+    // res.setHeader("Access-Control-Allow-Headers", "Content-type")
+    next()
+})
+
 // 查询全部学生路由
 app.get("/students", (req, res) => {
+    console.log("收到客户端的 /students get请求")
     res.send({
         status: "OK",
         data: STU_ARR
