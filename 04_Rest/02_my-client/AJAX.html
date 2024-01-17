@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-client</title>
+
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h3>AJAX请求</h3>
+    <button id="btn">获取信息</button>
+
+    <div id="root"></div>
+
+    <script>
+        const btn = document.getElementById("btn")
+        const root = document.getElementById("root")
+
+        // 点击按钮发送请求
+        btn.onclick = () => {
+            /* 
+                AJAX
+                    - 通过js向服务器发送请求来加载数据
+                    - 异步的js和xml
+                    - xml是早期AJAX使用的数据格式（现不用）
+                        <student>
+                            <name>孙悟空</name>    
+                        </student>
+                    - 目前数据格式使用json
+                        { "name": "孙悟空" }
+                    - 可选方案
+                        1、XMLHTTPrequest (xhr)（基本不用）
+                        2、Fetch
+                        3、Axios（推荐）
+                CORS 跨域资源共享
+                    - 完整域名（协议、域名、端口号）不同的网站之间发送的请求成为跨域请求
+                    - 为了服务器安全，浏览器默认阻止跨域请求
+                    - 解决方案
+                        - 服务器中配置允许跨域的头
+                    
+            */
+
+            // 创建xhr对象，xhr对象表示请求信息
+            const xhr = new XMLHttpRequest()
+
+            // 设置响应体类型，设置后不用再手动转换
+            xhr.responseType = "json"
+
+            // xhr数据加载完毕后执行，AJXAX是异步请求
+            xhr.onload = function () {
+                // 判断响应状态码
+                if (xhr.status === 200) {
+                    // xhr.response 响应信息，不设置响应体类型时需要手动转换
+                    // const result = JSON.parse(xhr.response)
+                    // console.log(result.status, result.data)
+
+                    // 判断数据是否正确，返回的数据里都包含一个设置的属性status，这个不是响应状态码，只是同名了
+                    if (xhr.response.status === "OK") {
+                        // 创建一个ul标签
+                        const ul = document.createElement("ul")
+                        // 将ul插入到root中
+                        root.appendChild(ul)
+                        // 遍历数组
+                        for (let stu of xhr.response.data) {
+                            // insertAdjacentHTML 在元素标签的内部结尾处插入模版字符串，字符串或解析成html
+                            ul.insertAdjacentHTML(
+                                "beforeend",
+                                `<li>${stu.id} - ${stu.name} - ${stu.age} - ${stu.gender} - ${stu.address}</li>`
+                            )
+                        }
+                    }
+                }
+                else {
+
+                }
+            }
+            // 设置请求信息
+            xhr.open("GET", "http://localhost:3000/students")
+            // 发送请求
+            xhr.send()
+        }
+    </script>
+</body>
+
+</html>
