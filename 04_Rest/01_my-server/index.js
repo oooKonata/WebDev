@@ -20,9 +20,9 @@ app.use((req, res, next) => {
     // 允许指定跨域请求
     // res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500")
     // 允许的请求方式
-    // res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE")
     // 允许传递的请求头
-    // res.setHeader("Access-Control-Allow-Headers", "Content-type")
+    res.setHeader("Access-Control-Allow-Headers", "Content-type")
     next()
 })
 
