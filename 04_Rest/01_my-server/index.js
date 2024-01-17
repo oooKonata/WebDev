@@ -26,6 +26,27 @@ app.use((req, res, next) => {
     next()
 })
 
+// 统一登录路由
+app.post("/login", (req, res) => {
+    const {username, password} = req.body
+    if (username === "oooKonata" && password === "1234") {
+        res.send({
+            status: "OK",
+            data: {
+                id: "12345",
+                username: "oooKonata",
+                nickname: "超级管理员"
+            }
+        })
+    } else {
+        res.status(403).send({
+            status: "err",
+            data: "用户名或密码错误！"
+        })
+    }
+})
+
+
 // 查询全部学生路由
 app.get("/students", (req, res) => {
     console.log("收到客户端的 /students get请求")
