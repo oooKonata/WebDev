@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地存储</title>
+</head>
+<body>
+    <h1>本地存储</h1>
+    <button id="btn01">存入</button>
+    <button id="btn02">取出</button>
+    <button id="btn03">删除</button>
+    <button id="btn04">清空</button>
+
+    <script>
+        const btn01 = document.getElementById("btn01")
+        const btn02 = document.getElementById("btn02")
+        const btn03 = document.getElementById("btn03")
+        const btn04 = document.getElementById("btn04")
+        /* 
+            本地存储的两种方式
+                - sessionStorage
+                    会话结束就丢失
+                - localStorage
+                    可以一直保存
+        */
+        btn01.onclick = () => {
+            // setItem() 存储数据
+            // sessionStorage.setItem("name", "孙悟空")
+            // sessionStorage.setItem("age", "18")
+            // sessionStorage.setItem("gender", "男")
+            // sessionStorage.setItem("address", "花果山")
+            localStorage.setItem("name", "孙悟空")
+            localStorage.setItem("age", "18")
+            localStorage.setItem("gender", "男")
+            localStorage.setItem("address", "花果山")
+        }
+        btn02.onclick = () => {
+            // getItem() 存储数据
+            // sessionStorage.getItem("name")
+            // sessionStorage.getItem("age")
+            // sessionStorage.getItem("gender")
+            // sessionStorage.getItem("address")
+            // console.log(sessionStorage)
+            localStorage.getItem("name")
+            localStorage.getItem("age")
+            localStorage.getItem("gender")
+            localStorage.getItem("address")
+            console.log(localStorage)
+        }
+        btn03.onclick = () => {
+            // removeItem() 存储数据
+            // sessionStorage.removeItem("name")
+            localStorage.removeItem("name")
+        }
+        btn04.onclick = () => {
+            // clear() 存储数据
+            // sessionStorage.clear()
+            localStorage.clear()
+        }
+
+    </script>
+</body>
+</html>

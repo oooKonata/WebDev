@@ -31,16 +31,16 @@ app.post("/login", (req, res) => {
     const {username, password} = req.body
     if (username === "oooKonata" && password === "1234") {
         res.send({
-            status: "OK",
+            state: "OK",
             data: {
-                id: "12345",
                 username: "oooKonata",
+                password: "1234",
                 nickname: "超级管理员"
             }
         })
     } else {
         res.status(403).send({
-            status: "err",
+            state: "err",
             data: "用户名或密码错误！"
         })
     }
@@ -51,7 +51,7 @@ app.post("/login", (req, res) => {
 app.get("/students", (req, res) => {
     console.log("收到客户端的 /students get请求")
     res.send({
-        status: "OK",
+        state: "OK",
         data: STU_ARR
     })
 })
@@ -68,7 +68,7 @@ app.post("/students", (req, res) => {
     }
     STU_ARR.push(stu)
     res.send({
-        status: "OK",
+        state: "OK",
         data: stu
     })
 })
@@ -78,7 +78,7 @@ app.get("/students/:id", (req, res) => {
     const id = req.params.id
     const stu = STU_ARR.find(stu => stu.id === id)
     res.send({
-        status: "OK",
+        state: "OK",
         data: stu
     })
 })
@@ -91,7 +91,7 @@ app.delete("/students/:id", (req, res) => {
             const stu = STU_ARR[i]
             STU_ARR.splice(i, 1)
             res.send({
-                status: "OK",
+                state: "OK",
                 data: stu
             })
             return
@@ -99,7 +99,7 @@ app.delete("/students/:id", (req, res) => {
     }
     // 学生不存在，执行以下代码
     res.status(403).send({
-        status: "err",
+        state: "err",
         data: "学生id不存在"
     })
 })
@@ -115,12 +115,12 @@ app.put("/students", (req, res) => {
         stu.address = address
 
         res.send({
-            status: "OK",
+            state: "OK",
             data: stu
         })
     } else {
         res.status(403).send({
-            status: "err",
+            state: "err",
             data: "学生信息不存在"
         })
     }

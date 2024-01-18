@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my-client</title>
+    <title>AJAX请求</title>
 
     <style>
         ul {
@@ -63,8 +63,8 @@
                     // const result = JSON.parse(xhr.response)
                     // console.log(result.status, result.data)
 
-                    // 判断数据是否正确，返回的数据里都包含一个设置的属性status，这个不是响应状态码，只是同名了
-                    if (xhr.response.status === "OK") {
+                    // 判断数据是否正确
+                    if (xhr.response.state === "OK") {
                         // 创建一个ul标签
                         const ul = document.createElement("ul")
                         // 将ul插入到root中

@@ -5,25 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px 16px;
+            border: 1px solid black;
+        }
+        caption {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+    </style>
 </head>
 
 <body>
-    <h3>请登录</h3>
-    <form>
-        <div>
-            <input type="text" id="username" placeholder="用户名">
-        </div>
-        <div>
-            <input type="password" id="password" placeholder="密码">
-        </div>
-        <div>
-            <button id="loginBtn" type="button">登录</button>
-        </div>
-    </form>
+    <div id="root">
+        <h1>请登录</h1>
+        <h3 id="login-info"></h3>
+        <form>
+            <div>
+                <input type="text" id="username" placeholder="用户名">
+            </div>
+            <div>
+                <input type="password" id="password" placeholder="密码">
+            </div>
+            <div>
+                <button id="loginBtn" type="button">登录</button>
+            </div>
+        </form>
+    </div>
 
     <script>
         const btn = document.getElementById("loginBtn")
-        btn.onclick = () => {
+        const info = document.getElementById("login-info")
+        const root = document.getElementById("root")
+
+        // 加载数据函数
+        function loadData() {
+            fetch("http://localhost:3000/students")
+                .then(res => {
+                    if (res.status === 200) {
+                        // res.json()读取json格式数据，得到的是一个promise对象
+                        // 在下一个.then中读取
+                        return res.json()
+                    } else {
+                        // 抛出错误，最后catch统一处理
+                        throw new Error("加载失败！")
+                    }
+                })
+                .then(res => {
+                    console.log(res.data)
+                    // 获取数据后渲染到页面
+                    if (res.state === "OK") {
+                        // 获取要将table数据放入的div
+                        const dataDiv = document.getElementById("data")
+                        // 创建一个table标签
+                        const table = document.createElement("table")
+                        // 将table数据放入div
+                        dataDiv.appendChild(table)
+
+                        root.appendChild(table)
+                        table.insertAdjacentHTML(
+                            "beforeend",
+                            `<caption>学生列表</caption>`
+                        )
+                        table.insertAdjacentHTML(
+                            "beforeend", `
+                            <thead>
+                                <tr>
+                                    <th>学号</th>    
+                                    <th>姓名</th>    
+                                    <th>年龄</th>    
+                                    <th>性别</th>    
+                                    <th>地址</th>    
+                                </tr>    
+                            </thead>
+                            `)
+                        const tbody = document.createElement("tbody")
+                        table.appendChild(tbody)
+                        for (let stu of res.data) {
+                            tbody.insertAdjacentHTML("beforeend", `
+                            <tr>
+                                <td>${ stu.id }</td>
+                                <td>${ stu.name }</td>
+                                <td>${ stu.age }</td>
+                                <td>${ stu.gender }</td>
+                                <td>${ stu.address }</td>
+                            </tr>
+                            `)
+                        }
+
+                    } else {
+                        throw new Error("数据异常！")
+                    }
+                })
+                .catch((err) => {
+                    // 在这里统一处理错误
+                    console.log("出错了～", err)
+                })
+        }
+
+        // 判断用户登录状态
+        if (localStorage.getItem("nickname")) {
+            // 本地存储中有nickname，说明已经登录
+            root.innerHTML = `
+                        <h3>欢迎 ${localStorage.getItem("nickname")} 回来</h3>
+                        <button onclick="loadData()">获取信息</button>
+                        <div id="data"></div>
+                    `
+        } else {
+            // 本地存储中没有nickname，说明没登录
+
+            btn.onclick = () => {
             // 获取用户名和密码
             const username = document.getElementById("username").value.trim()
             const password = document.getElementById("password").value.trim()
@@ -36,13 +134,29 @@
                 },
                 body: JSON.stringify({ username, password })
             })
-                .then((res) => res.json())
-                .then((res) => {
+                .then(res => res.json())
+                .then(res => {
+                    // 数据错误就抛出给catch处理
                     console.log(res)
+                    if(res.state !== "OK"){
+                        throw new Error("数据获取失败！")
+                    }
+                    // 登录成功，将用户信息存入本地localStorage
+                    localStorage.setItem("username", res.data.username)
+                    localStorage.setItem("password", res.data.password)
+                    localStorage.setItem("nickname", res.data.nickname)
+                    // 数据读取成功，替换掉登录界面的内容
+                    root.innerHTML = `
+                        <h3>欢迎 ${res.data.nickname} 回来</h3>
+                        <button onclick="loadData()">获取信息</button>
+                        <div id="data"></div>
+                    `
                 })
-                .catch((err) => {
-                    console.log("出错了", err)
+                .catch(err => {
+                    // 处理错误
+                    info.innerText = "用户名或密码错误"
                 })
+        }
         }
     </script>
 </body>

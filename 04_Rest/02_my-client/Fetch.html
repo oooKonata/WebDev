@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my-client</title>
+    <title>Fetch请求</title>
 
     <style>
         table {
@@ -47,7 +47,7 @@
 
              */
             fetch("http://localhost:3000/students")
-                .then((res) => {
+                .then(res => {
                     if (res.status === 200) {
                         // res.json()读取json格式数据，得到的是一个promise对象
                         // 在下一个.then中读取
@@ -57,10 +57,10 @@
                         throw new Error("加载失败！")
                     }
                 })
-                .then((res) => {
+                .then(res => {
                     console.log(res.data)
                     // 获取数据后渲染到页面
-                    if (res.status === "OK") {
+                    if (res.state === "OK") {
                         // 创建一个table标签
                         const table = document.createElement("table")
                         root.appendChild(table)
