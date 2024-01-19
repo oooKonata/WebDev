@@ -1,4 +1,6 @@
 const express = require("express")
+const jwt = require("jsonwebtoken")
+
 const app = express()
 
 // 解析请求体中间件
@@ -22,7 +24,7 @@ app.use((req, res, next) => {
     // 允许的请求方式
     res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE")
     // 允许传递的请求头
-    res.setHeader("Access-Control-Allow-Headers", "Content-type")
+    res.setHeader("Access-Control-Allow-Headers", "Content-type,Authorization")
     next()
 })
 
@@ -30,11 +32,20 @@ app.use((req, res, next) => {
 app.post("/login", (req, res) => {
     const {username, password} = req.body
     if (username === "oooKonata" && password === "1234") {
+        // 登录成功，生产token
+        const token = jwt.sign({
+            username: "oooKonata",
+            password: "1234",
+            nickname: "超级管理员"
+        }, "hellooooKonata", {
+            expiresIn: "1d"
+        })
+
         res.send({
             state: "OK",
             data: {
-                username: "oooKonata",
-                password: "1234",
+                token,
+                // 也可传一些不涉及隐私（敏感）的数据，方便其他用处
                 nickname: "超级管理员"
             }
         })
@@ -49,11 +60,29 @@ app.post("/login", (req, res) => {
 
 // 查询全部学生路由
 app.get("/students", (req, res) => {
-    console.log("收到客户端的 /students get请求")
-    res.send({
-        state: "OK",
-        data: STU_ARR
-    })
+    try {
+        // 登录成功后才能访问，检查用户是否登录
+        // 在客户端发送请求时，将token放入请求头发送给服务器
+        // 读取请求头中的token,返回的字符串中包含“Bearer”和一个“空格”开头
+        // 使用split(" ")方法，从空格处断开，选角标为1的元素就是token
+        const token = req.get("Authorization").split(" ")[1]
+    
+        //token解密
+        const decodeToken = jwt.verify(token, "hellooooKonata")
+        // 解密成功，发送学生信息
+        res.send({
+            state: "OK",
+            data: STU_ARR
+        })
+    } catch (err) {
+        // 解密失败
+        res.status(403).send({
+            state: "err",
+            data: "token无效"
+        })
+    }
+
+    
 })
 
 // 添加学生路由，将新增的学生信息发送给客户端

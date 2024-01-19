@@ -41,13 +41,49 @@
     </div>
 
     <script>
+        /* 
+            服务器验证
+                - rest风格服务器是无状态服务器，不要再服务器中存储用户数据
+                - 可以将用户信息发送给客户端保存，需加密保证安全问题
+                - nodo中可直接使用jsonwebtoken对数据进行加密
+                    - jsonwebtoken（jwt）-> 对json加密后，生成一个web中使用的令牌（token）
+                - 使用步骤：
+                    1、安装
+                        npm i jsonwebtoken
+                    2、引用
+                        const jwt = require("jsonwebtoken")
+                    3、使用
+                        - 加密：jwt.sign()
+                        - 解密：jwt.verify()
+                        
+        */
         const btn = document.getElementById("loginBtn")
         const info = document.getElementById("login-info")
         const root = document.getElementById("root")
 
-        // 加载数据函数
         function loadData() {
-            fetch("http://localhost:3000/students")
+            // 访问需要权限的api时，需在请求中附加权限的信息
+            // token一般通过请求头发送
+            const token = localStorage.getItem("token")
+            // 设置请求超时则终止请求
+            // 创建AbortController
+            const controller = new AbortController()
+            // 设置定时器
+            setTimeout(() => {
+                // 超时终止请求
+                controller.abort()
+            }, 3000)
+
+            fetch("http://localhost:3000/students", {
+                // 设置超时终止信号signal，表示当前请求接收controller的超市终止控制
+                signal: controller.signal,
+
+                // 请求头中附加权限信息
+                headers: {
+                    // Bearer是一种权限认证方案，要加在前面（固定格式）
+                    "Authorization": `Bearer ${token}`
+                }
+            })
                 .then(res => {
                     if (res.status === 200) {
                         // res.json()读取json格式数据，得到的是一个promise对象
@@ -111,11 +147,12 @@
         }
 
         // 判断用户登录状态
-        if (localStorage.getItem("nickname")) {
+        if (localStorage.getItem("token")) {
             // 本地存储中有nickname，说明已经登录
             root.innerHTML = `
                         <h3>欢迎 ${localStorage.getItem("nickname")} 回来</h3>
                         <button onclick="loadData()">获取信息</button>
+                        <button onclick="localStorage.clear()">注销</button>
                         <div id="data"></div>
                     `
         } else {
@@ -141,14 +178,14 @@
                     if(res.state !== "OK"){
                         throw new Error("数据获取失败！")
                     }
-                    // 登录成功，将用户信息存入本地localStorage
-                    localStorage.setItem("username", res.data.username)
-                    localStorage.setItem("password", res.data.password)
+                    // 登录成功，将用户信息(token)存入本地localStorage
+                    localStorage.setItem("token", res.data.token)
                     localStorage.setItem("nickname", res.data.nickname)
                     // 数据读取成功，替换掉登录界面的内容
                     root.innerHTML = `
                         <h3>欢迎 ${res.data.nickname} 回来</h3>
                         <button onclick="loadData()">获取信息</button>
+                        <button onclick="localStorage.clear()">注销</button>
                         <div id="data"></div>
                     `
                 })
