@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
             password: "1234",
             nickname: "超级管理员"
         }, "hellooooKonata", {
-            expiresIn: "1d"
+            expiresIn: "30d"
         })
 
         res.send({

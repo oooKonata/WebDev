@@ -10,25 +10,107 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div id="btn01">按钮01</div>
+    <button id="btn01">按钮01</button>
 
     <script>
-        const btn01 = document.getElementById("btn01")
-        // axios(config)
-        axios({
-            method: "post",
-            url: "http:localhost:3000/students",
-            data: {
-                name: "孙悟空",
-                age: 18,
-                gener: "男",
-                address: "花果山"
-            }.then(res => {
-                console.log(res)
-            }).catch(err => {
-                console.log("错误～", err)
-            })
-        })
+        // axios的默认配置
+        axios.defaults.baseURL = "http:localhost:3000"
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+
+        // axios实例，相当于axios的副本，功能和axios一样
+        const instanceAxios = axios.create() 
+
+        // axios拦截器可以对请求或者响应进行拦截，在请求发送之前或响应读取之前处理数据
+        // axios拦截器仅对当前实例生效
+
+        // 请求拦截器
+        axios.interceptors.requet.use(
+            function(config){
+                // config 表示axios中的配置对象
+                config.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+                // 返回修改后的config
+                return config
+            },
+            function(err){
+                // 请求错误时执行
+                return Promise.reject(err)
+            }
+        )
+
+        // 响应拦截器
+        axios.interceptors.response.use(
+            function(response){
+                // 2xx 范围内状态码时触发该函数
+                
+                // 返回修改后的response
+                return response
+            },
+            function(err){
+                // 请求错误时执行
+                return Promise.reject(err)
+            }
+        )
+
+        document.getElementById("btn01").onclick = () => {
+            // axios(config)
+            axios({
+                // baseURL 指定服务器根目录（路径前缀）
+                // baseURL: "http:localhost:3000",
+                
+                // 请求地址
+                // url: "http:localhost:3000/students",
+                url: "students",
+
+                // 请求方法，默认是get
+                method: "get",
+
+                // 指定请求头，不写时data默认会根据数据格式自动转换
+                // headers: {"Content-Type": "application/json"},
+                // headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`},
+                
+                // 请求体，get请求没有data
+                // data: "name=孙悟空&age=18" --> 会自动设置相应的请求头
+                // data会自动转换成json
+                // data: {
+                //     name: "孙悟空",
+                //     age: 18,
+                //     gener: "男",
+                //     address: "花果山"
+                // },
+
+                // transformRequest 用来处理请求数据data
+                // 函数数组按照顺序执行，会收到两个参数data和headers
+                // transformRequest: [
+                //     // 可以在这里修改data和headers
+                //     function(data, headers){
+                //         data.name = "猪八戒"
+                //         headers["Content-Type"] = "application/json"
+                //         console.log(data)
+                //         console.log(headers)
+                //         return data
+                //     },
+                //     function(data, headers){
+                //         // 最后一个函数必须返回一个字符串才能使数据生效
+                //         return JSON.stringify(data)
+                //     }
+                // ],
+
+                // params 指定请求路径中的查询字符串
+                // params: {
+                //     id: 1,
+                //     name: "孙悟空"
+                // },
+
+                // 请求超时时间，超过时间将终止请求
+                // timeout: 1000
+
+            }).then(res => {
+                    console.log(res.data)
+                }).catch(err => {
+                    console.log("错误～", err)
+                })
+        }
+        
     </script>
 </body>
 </html>
