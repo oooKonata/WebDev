@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <!-- 
+        前端暂时只能直接引入，要使用包管理器安装需要打包工具
+     -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="btn01">按钮01</div>
+
+    <script>
+        const btn01 = document.getElementById("btn01")
+        // axios(config)
+        axios({
+            method: "post",
+            url: "http:localhost:3000/students",
+            data: {
+                name: "孙悟空",
+                age: 18,
+                gener: "男",
+                address: "花果山"
+            }.then(res => {
+                console.log(res)
+            }).catch(err => {
+                console.log("错误～", err)
+            })
+        })
+    </script>
+</body>
+</html>
