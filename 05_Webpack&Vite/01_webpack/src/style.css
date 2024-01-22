@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('./Sherman-Display.ttf'), url('./Sherman-Italic.ttf');
+}
+
+.hello {
+    color: red;
+    font-family: 'MyFont';
+    font-size: 2rem;
+    background: url('./icon.png');
+}
