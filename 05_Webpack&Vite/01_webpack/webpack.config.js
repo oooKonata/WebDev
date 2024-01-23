@@ -1,11 +1,17 @@
 const path = require('path')
+// HtmlWebpackPlugin插件 打包自动生成/dist目录下的html文件
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        // 每次构建前清理/dist文件夹，构建后就只会存在将要用到的文件
+        clean: true,
     },
+    // 设置为开发环境
+    // mode: 'devlopment',
     module: {
         rules: [
             {
@@ -39,4 +45,9 @@ module.exports = {
             },
         ],
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'webpack learning',
+        }),
+    ],
 }
