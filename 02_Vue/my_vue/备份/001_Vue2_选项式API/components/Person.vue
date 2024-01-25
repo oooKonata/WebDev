@@ -9,39 +9,39 @@
 </template>
 
 <script lang="ts">
-export default {
-    // 组件名
-    name: "Person",
-    // 数据
-    data() {
-        return {
-            name: "oooKonata",
-            age: 18,
-            tel: 18700000000,
-        };
-    },
-    // 方法
-    methods: {
-        // 修改姓名
-        changeName() {
-            this.name = "swk";
+    export default {
+        // 组件名
+        name: 'Person',
+        // 数据
+        data() {
+            return {
+                name: 'oooKonata',
+                age: 18,
+                tel: 18700000000,
+            }
         },
-        // 修改年龄
-        changeAge() {
-            this.age += 1;
+        // 方法
+        methods: {
+            // 修改姓名
+            changeName() {
+                this.name = 'swk'
+            },
+            // 修改年龄
+            changeAge() {
+                this.age += 1
+            },
+            // 展示电话
+            showTel() {
+                alert(this.tel)
+            },
         },
-        // 展示电话
-        showTel() {
-            alert(this.tel);
-        },
-    },
-};
+    }
 </script>
 
 <style scoped>
-.person {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 20px;
-}
+    .person {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 20px;
+    }
 </style>
