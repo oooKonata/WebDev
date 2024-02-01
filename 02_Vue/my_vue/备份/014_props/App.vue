@@ -8,6 +8,7 @@
     import Person from './components/Person.vue'
     import { reactive } from 'vue'
     import { type Persons } from './types'
+
     let personList = reactive<Persons>([
         { id: 'qwer1', name: '张三', age: 18 },
         { id: 'qwer2', name: '李四', age: 19 },
