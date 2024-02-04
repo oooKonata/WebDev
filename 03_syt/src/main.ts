@@ -8,12 +8,23 @@ import App from './App.vue'
 import HospitalTop from '@/components/hospital_top/index.vue'
 import HospitalBottom from '@/components/hospital_bottom/index.vue'
 
+// 引入路由器
+import router from "@/router"
+// 引入element-plus插件和样式
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
 // 创建应用实例
 const app = createApp(App)
 
 // 全局注册组件
 app.component('HospitalTop', HospitalTop)
 app.component('HospitalBottom', HospitalBottom)
+
+// 安装路由器
+app.use(router)
+// 安装element-plus插件
+app.use(ElementPlus)
 
 // 挂载
 app.mount('#app')

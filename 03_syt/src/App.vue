@@ -4,7 +4,8 @@
     <HospitalTop />
     <!-- 展示路由组件 -->
     <div class="content">
-      xxx
+      <!-- 展示路由组件区域 -->
+      <router-view></router-view>
     </div>
     <!-- 底部全局组件 -->
     <HospitalBottom />
@@ -26,7 +27,6 @@
     width: 1200px;
     // 最小高度
     min-height: 700px;
-    background: red;
   }
 }
 </style>
