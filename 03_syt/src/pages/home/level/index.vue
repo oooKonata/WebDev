@@ -23,21 +23,20 @@
     color: #999;
     h1 {
       font-weight: 900;
-      margin: 10px 0;
+      margin: 16px 0;
     }
     .content {
       display: flex;
-      margin-right: 10px;
       font-size: 14px;
       .left {
-        margin-right: 10px;
+        margin-right: 12px;
         // 左侧标题不拉伸不压缩
         flex: 0 0 auto;
       }
       .city {
         display: flex;
         li {
-          margin-right: 10px;
+          margin-right: 12px;
           // &表示嵌套的上一级
           &.active {
             color: #55a6fe;

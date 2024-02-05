@@ -11,7 +11,7 @@
 
 <style scoped lang="scss">
   .search {
-    margin-top: 10px;
+    margin-top: 16px;
     width: 100%;
     height: 50px;
     display: flex;

@@ -35,14 +35,13 @@
 
 <style scoped lang="scss">
   .region {
-    margin-top: 10px;
+    margin-top: 16px;
     color: #999;
     .content {
       display: flex;
-      margin-right: 10px;
       font-size: 14px;
       .left {
-        margin-right: 10px;
+        margin-right: 12px;
         // 左侧标题不拉伸不压缩
         flex: 0 0 auto;
       }
@@ -50,8 +49,8 @@
         display: flex;
         flex-wrap: wrap;
         li {
-          margin-right: 10px;
-          margin-bottom: 10px;
+          margin-right: 12px;
+          margin-bottom: 16px;
           // &表示嵌套的上一级
           &.active {
             color: #55a6fe;
