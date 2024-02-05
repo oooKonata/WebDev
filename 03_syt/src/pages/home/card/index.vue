@@ -4,8 +4,13 @@
       <div class="left">
         <div class="hospital_name">大标题</div>
         <div class="tip">
-          <div class="level">等级1</div>
-          <div class="time">2024.01.01</div>
+          <div class="level">
+            <thumbs-up theme="outline" size="16" fill="#333" :strokeWidth="2" />
+            <span>等级1</span>
+          </div>
+          <div class="time">
+            <span>2024.01.01</span>
+          </div>
         </div>
       </div>
       <div class="right">
@@ -15,12 +20,15 @@
   </el-card>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  // import { ThumbsUp } from '@icon-park/vue'
+</script>
 
 <style scoped lang="scss">
   .content {
     display: flex;
     justify-content: space-between;
+
     .left {
       .tip {
         display: flex;
@@ -28,11 +36,13 @@
         margin-top: 16px;
         font-size: 13px;
         color: #999;
+
         .level {
           margin-right: 32px;
         }
       }
     }
+
     .right {
       img {
         width: 48px;

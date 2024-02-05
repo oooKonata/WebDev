@@ -9,10 +9,12 @@ import HospitalTop from '@/components/hospital_top/index.vue'
 import HospitalBottom from '@/components/hospital_bottom/index.vue'
 
 // 引入路由器
-import router from "@/router"
+import router from '@/router'
 // 引入element-plus插件和样式
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+// 引入IconPark样式组件-字节跳动样式库
+import '@icon-park/vue/styles/index.css'
 
 // 创建应用实例
 const app = createApp(App)
