@@ -8,7 +8,7 @@ import axios from 'axios'
 // 创建axios实例，在实例上设置基础路径、响应超时时间等
 const request = axios.create({
   baseURL: '',
-  timeout: 5000,
+  timeout: 30000,
 })
 // 请求拦截器
 request.interceptors.request.use(config => {
@@ -20,7 +20,7 @@ request.interceptors.request.use(config => {
 request.interceptors.response.use(
   response => {
     // 响应拦截器成功回调，一般进行数据进化
-    return response.data
+    return response
   },
   error => {
     // 处理http网络错误

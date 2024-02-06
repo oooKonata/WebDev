@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { ThumbsUp, AlarmClock } from '@icon-park/vue-next'
-  const { url } = defineProps(['url'])
+  defineProps(['url'])
 </script>
 
 <style scoped lang="scss">

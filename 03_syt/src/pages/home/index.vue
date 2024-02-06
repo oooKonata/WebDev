@@ -13,10 +13,23 @@
         <Region />
         <!-- 医院展示（卡片） -->
         <div class="hospital">
-          <Card v-for="item in 8" :key="item" :url="arr[item - 1]" />
+          <Card
+            v-for="item in pageSize"
+            :key="item"
+            :url="catUrlArr[item - 1]"
+          />
+          <!-- 分页器 -->
+          <el-pagination
+            v-model:current-page="currentPage"
+            v-model:page-size="pageSize"
+            :page-sizes="[2, 4, 6, 8]"
+            layout="total, sizes, prev, pager, next, jumper"
+            :background="true"
+            :total="10"
+            @current-change="currentChange"
+            @size-change="sizeChange"
+          />
         </div>
-        <!-- 分页器 -->
-        <Pagination />
       </el-col>
       <el-col :span="4">222</el-col>
     </el-row>
@@ -34,30 +47,43 @@
   import Region from './region/index.vue'
   // 医院展示（卡片）
   import Card from './card/index.vue'
-  // 分页器
-  import Pagination from './pagination/index.vue'
 
-  import { reactive, onMounted } from 'vue'
-  let arr: any = reactive([])
-  // 数据-图片地址
-  import request from '@/utils/request'
+  import { ref, onMounted } from 'vue'
+  // 引入api reqCat
+  import { reqCat } from '@/api/home'
+  // 当前分页
+  const currentPage = ref(1)
+  // 总分页数
+  const pageSize = ref(2)
+  // 猫咪图片url数组
+  let catUrlArr: any = ref([])
+  // 组件挂在后发起请求
   onMounted(() => {
-    request
-      .get(
-        'https://api.thecatapi.com/v1/images/search?limit=8&breed_ids=beng&api_key=live_8Sxxd5y4D4661niiasXLpe7T0z3FgmHbiFLd1SBCkxuqmuDfByDHouj3o0PmFyM4'
-      )
-      .then((res: any) => {
-        for (let index = 0; index < res.length; index++) {
-          arr.push(res[index].url)
-        }
-        console.log(arr)
-      })
+    // 获取图片url数组
+    getCatUrl()
   })
+  const currentChange = () => {
+    getCatUrl()
+  }
+  const sizeChange = () => {
+    getCatUrl()
+  }
+  // 获取图片url数组
+  const getCatUrl = async () => {
+    let result: any = await reqCat()
+    if (result.status == 200) {
+      for (let index = 0; index < result.data.length; index++) {
+        catUrlArr.value.push(result.data[index].url)
+      }
+      console.log(catUrlArr.value)
+    }
+  }
 </script>
 
 <style scoped lang="scss">
   .hospital {
     margin-top: 10px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
