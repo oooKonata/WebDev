@@ -5,10 +5,11 @@
         <div class="hospital_name">大标题</div>
         <div class="tip">
           <div class="level">
-            <thumbs-up theme="outline" size="16" fill="#333" :strokeWidth="2" />
+            <thumbs-up theme="outline" size="16" fill="#999" :strokeWidth="4" />
             <span>等级1</span>
           </div>
           <div class="time">
+            <alarm-clock theme="outline" size="14" fill="#999" />
             <span>2024.01.01</span>
           </div>
         </div>
@@ -21,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-  // import { ThumbsUp } from '@icon-park/vue'
+  import { ThumbsUp, AlarmClock } from '@icon-park/vue-next'
 </script>
 
 <style scoped lang="scss">
@@ -39,6 +40,18 @@
 
         .level {
           margin-right: 32px;
+          display: flex;
+          align-items: center;
+          span {
+            margin-left: 4px;
+          }
+        }
+        .time {
+          display: flex;
+          align-items: center;
+          span {
+            margin-left: 4px;
+          }
         }
       }
     }
