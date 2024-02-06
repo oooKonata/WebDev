@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="right">
-        <img src="../../../assets/images/Heng.jpeg" alt="医院图片" />
+        <img :src="url" alt="医院图片" />
       </div>
     </div>
   </el-card>
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
   import { ThumbsUp, AlarmClock } from '@icon-park/vue-next'
+  const { url } = defineProps(['url'])
 </script>
 
 <style scoped lang="scss">

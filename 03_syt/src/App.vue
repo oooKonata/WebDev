@@ -12,21 +12,19 @@
   </div>
 </template>
 
-<script setup lang='ts'>
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  .content {
-    margin-top: 64px;
-    width: 1200px;
-    // 最小高度
-    min-height: 700px;
+    .content {
+      margin-top: 64px;
+      width: 1200px;
+      // 最小高度
+      min-height: 700px;
+    }
   }
-}
 </style>

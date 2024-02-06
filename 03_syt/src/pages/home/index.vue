@@ -13,7 +13,7 @@
         <Region />
         <!-- 医院展示（卡片） -->
         <div class="hospital">
-          <Card v-for="item in 8" :key="item" />
+          <Card v-for="item in 8" :key="item" :url="arr[item - 1]" />
         </div>
         <!-- 分页器 -->
         <Pagination />
@@ -36,6 +36,23 @@
   import Card from './card/index.vue'
   // 分页器
   import Pagination from './pagination/index.vue'
+
+  import { reactive, onMounted } from 'vue'
+  let arr: any = reactive([])
+  // 数据-图片地址
+  import request from '@/utils/request'
+  onMounted(() => {
+    request
+      .get(
+        'https://api.thecatapi.com/v1/images/search?limit=8&breed_ids=beng&api_key=live_8Sxxd5y4D4661niiasXLpe7T0z3FgmHbiFLd1SBCkxuqmuDfByDHouj3o0PmFyM4'
+      )
+      .then((res: any) => {
+        for (let index = 0; index < res.length; index++) {
+          arr.push(res[index].url)
+        }
+        console.log(arr)
+      })
+  })
 </script>
 
 <style scoped lang="scss">

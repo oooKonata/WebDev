@@ -7,8 +7,6 @@
       layout="total, sizes, prev, pager, next, jumper"
       :background="true"
       :total="32"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
     />
   </div>
 </template>
