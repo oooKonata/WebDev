@@ -15,6 +15,8 @@
         <div class="hospital">
           <Card v-for="item in 8" :key="item" />
         </div>
+        <!-- 分页器 -->
+        <Pagination />
       </el-col>
       <el-col :span="4">222</el-col>
     </el-row>
@@ -32,11 +34,13 @@
   import Region from './region/index.vue'
   // 医院展示（卡片）
   import Card from './card/index.vue'
+  // 分页器
+  import Pagination from './pagination/index.vue'
 </script>
 
 <style scoped lang="scss">
   .hospital {
-    margin: 10px 0 20px 0;
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;

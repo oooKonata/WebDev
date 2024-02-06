@@ -13,6 +13,9 @@ import router from '@/router'
 // 引入element-plus插件和样式
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+// ElementPlus全局配置国际化的配置(设置组件语言-默认英文)
+// @ts-ignore // 忽略下一行的ts检查
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 // 创建应用实例
 const app = createApp(App)
@@ -24,7 +27,10 @@ app.component('HospitalBottom', HospitalBottom)
 // 安装路由器
 app.use(router)
 // 安装element-plus插件
-app.use(ElementPlus)
+app.use(ElementPlus, {
+  // 组件语言配置成中文
+  locale: zhCn,
+})
 
 // 挂载
 app.mount('#app')
