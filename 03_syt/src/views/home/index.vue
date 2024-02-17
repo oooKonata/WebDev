@@ -33,7 +33,9 @@
           />
         </div>
       </el-col>
-      <el-col :span="4">222</el-col>
+      <el-col :span="4">
+        <Tip />
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -49,6 +51,8 @@
   import Region from './region/index.vue'
   // 医院展示（卡片）
   import Card from './card/index.vue'
+  // 右侧组件
+  import Tip from './tip/index.vue'
 
   import { ref, onMounted } from 'vue'
   // 引入api reqCat
@@ -59,7 +63,7 @@
   // 当前页数
   let currentPage = ref(1)
   // 每页显示的条目数
-  let pageSize = ref(2)
+  let pageSize = ref(4)
   // 每页实际条目数
   let pageNum = ref(2)
   // 接口返回的全部图片url数组
