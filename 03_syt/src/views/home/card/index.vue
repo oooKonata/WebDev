@@ -5,11 +5,20 @@
         <div class="hospital_name">大标题</div>
         <div class="tip">
           <div class="level">
-            <thumbs-up theme="outline" size="16" fill="#999" :strokeWidth="4" />
+            <div class="icon-thumbs-up">
+              <thumbs-up
+                theme="outline"
+                size="15"
+                fill="#999"
+                :strokeWidth="4"
+              />
+            </div>
             <span>等级1</span>
           </div>
           <div class="time">
-            <alarm-clock theme="outline" size="14" fill="#999" />
+            <div class="icon-alarm-clock">
+              <alarm-clock theme="outline" size="14" fill="#999" />
+            </div>
             <span>2024.01.01</span>
           </div>
         </div>
@@ -40,19 +49,23 @@
         color: #999;
 
         .level {
+          .icon-thumbs-up {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+          }
           margin-right: 32px;
           display: flex;
           align-items: center;
-          span {
-            margin-left: 4px;
-          }
         }
         .time {
+          .icon-alarm-clock {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+          }
           display: flex;
           align-items: center;
-          span {
-            margin-left: 4px;
-          }
         }
       }
     }

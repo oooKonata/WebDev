@@ -10,6 +10,7 @@ import HospitalBottom from '@/components/hospital_bottom/index.vue'
 
 // 引入路由器
 import router from '@/router'
+
 // 引入element-plus插件和样式
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
