@@ -4,16 +4,12 @@
     <div class="department">
       <div class="header">
         <div class="left">
-          <div class="icon-hospital">
-            <hospital theme="outline" size="16" fill="#999" :strokeWidth="4" />
-          </div>
+          <hospital theme="outline" size="16" fill="#999" :strokeWidth="4" />
           <span>常见科室</span>
         </div>
         <div class="right">
           <span>全部</span>
-          <div class="icon-right">
-            <right theme="outline" size="16" fill="#999" />
-          </div>
+          <right theme="outline" size="16" fill="#999" />
         </div>
       </div>
       <div class="content">
@@ -33,16 +29,12 @@
     <div class="notice">
       <div class="header">
         <div class="left">
-          <div class="icon-hospital">
-            <hospital theme="outline" size="16" fill="#999" :strokeWidth="4" />
-          </div>
+          <hospital theme="outline" size="16" fill="#999" :strokeWidth="4" />
           <span>平台公告</span>
         </div>
         <div class="right">
           <span>全部</span>
-          <div class="icon-right">
-            <right theme="outline" size="16" fill="#999" />
-          </div>
+          <right theme="outline" size="16" fill="#999" />
         </div>
       </div>
       <div class="content">
@@ -57,16 +49,12 @@
     <div class="notice">
       <div class="header">
         <div class="left">
-          <div class="icon-hospital">
-            <hospital theme="outline" size="16" fill="#999" :strokeWidth="4" />
-          </div>
+          <hospital theme="outline" size="16" fill="#999" :strokeWidth="4" />
           <span>停诊公告</span>
         </div>
         <div class="right">
           <span>全部</span>
-          <div class="icon-right">
-            <right theme="outline" size="16" fill="#999" />
-          </div>
+          <right theme="outline" size="16" fill="#999" />
         </div>
       </div>
       <div class="content">
@@ -93,19 +81,23 @@
         display: flex;
         justify-content: space-between;
         .left {
-          .icon-hospital {
-            height: 16px;
-            margin-right: 4px;
-          }
           display: flex;
           align-items: center;
+          span:first-child {
+            display: flex;
+          }
+          span:last-child {
+            padding-left: 4px;
+            font-size: 16px;
+            font-weight: 900;
+          }
         }
         .right {
-          .icon-right {
-            height: 16px;
-          }
           display: flex;
           align-items: center;
+          span:last-child {
+            display: flex;
+          }
         }
       }
       .content {
@@ -127,19 +119,20 @@
         display: flex;
         justify-content: space-between;
         .left {
-          .icon-hospital {
-            height: 16px;
-            margin-right: 4px;
-          }
           display: flex;
           align-items: center;
+          span:last-child {
+            padding-left: 4px;
+            font-size: 16px;
+            font-weight: 900;
+          }
         }
         .right {
-          .icon-right {
-            height: 16px;
-          }
           display: flex;
           align-items: center;
+          span:last-child {
+            display: flex;
+          }
         }
       }
       .content {

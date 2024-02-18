@@ -5,20 +5,11 @@
         <div class="hospital_name">大标题</div>
         <div class="tip">
           <div class="level">
-            <div class="icon-thumbs-up">
-              <thumbs-up
-                theme="outline"
-                size="15"
-                fill="#999"
-                :strokeWidth="4"
-              />
-            </div>
+            <thumbs-up theme="outline" size="14" fill="#999" :strokeWidth="4" />
             <span>等级1</span>
           </div>
           <div class="time">
-            <div class="icon-alarm-clock">
-              <alarm-clock theme="outline" size="14" fill="#999" />
-            </div>
+            <alarm-clock theme="outline" size="14" fill="#999" />
             <span>2024.01.01</span>
           </div>
         </div>
@@ -45,27 +36,35 @@
         display: flex;
         justify-content: space-between;
         margin-top: 16px;
-        font-size: 13px;
+        font-size: 14 px;
         color: #999;
 
         .level {
-          .icon-thumbs-up {
-            width: 16px;
-            height: 16px;
-            margin-right: 4px;
-          }
           margin-right: 32px;
           display: flex;
           align-items: center;
+          /* 
+            引入的iconpark svg图标编译后会套一层span标签，svg在span里不是居中对齐的，
+            svg也是图片，受vertical-align（基线）影响，
+            直接将span转变成弹性容器，大小由内容撑开，
+            就不会出现span内部默认间距影响svg位置而无法居中对齐的问题
+          */
+          span:first-child {
+            display: flex;
+          }
+          span:last-child {
+            padding-left: 4px;
+          }
         }
         .time {
-          .icon-alarm-clock {
-            width: 16px;
-            height: 16px;
-            margin-right: 4px;
-          }
           display: flex;
           align-items: center;
+          span:first-child {
+            display: flex;
+          }
+          span:last-child {
+            padding-left: 4px;
+          }
         }
       }
     }
