@@ -57,8 +57,8 @@
   import { ref, onMounted } from 'vue'
   // 引入api reqCat
   import { reqCat } from '@/api/home'
-  // 引入pagination hook
-  import pagination from '@/utils/pagination'
+  // 引入usePagination hook
+  import usePagination from '@/hooks/usePagination'
 
   // 当前页数
   let currentPage = ref(1)
@@ -85,7 +85,8 @@
   // 分页号改变时执行
   const currentChange = () => {
     // 使用封装的分页hook
-    const { pageNum: a, pageUrlArr: b } = pagination(
+    // 解构赋值重命名
+    const { pageNum: a, pageUrlArr: b } = usePagination(
       currentPage.value,
       pageSize.value,
       total.value,
@@ -116,14 +117,14 @@
 
   // 分页条目数改变时执行
   const sizeChange = () => {
-    const x = pagination(
+    const pagination = usePagination(
       currentPage.value,
       pageSize.value,
       total.value,
       catUrlArr.value
     )
-    pageNum.value = x.pageNum
-    pageUrlArr.value = x.pageUrlArr
+    pageNum.value = pagination.pageNum
+    pageUrlArr.value = pagination.pageUrlArr
   }
   // 获取图片url数组
   const getCatUrl = async () => {

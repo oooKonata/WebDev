@@ -62,14 +62,14 @@
   } from '@element-plus/icons-vue'
   import { useRouter, useRoute } from 'vue-router'
   // 获取路由器
-  let $router = useRouter()
+  const router = useRouter()
   // 获取当前路由信息
-  let $route = useRoute()
-  console.log($route.path)
+  const route = useRoute()
+  console.log(route.path)
 
   // 菜单回调函数
   const changeActive = (path: string) => {
-    $router.push(path)
+    router.push(path)
   }
 </script>
 
