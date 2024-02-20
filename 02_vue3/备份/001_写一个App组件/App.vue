@@ -6,7 +6,7 @@
 
 <script lang="ts">
   export default {
-    name:'App' //组件名
+    name: 'App', //组件名
   }
 </script>
 

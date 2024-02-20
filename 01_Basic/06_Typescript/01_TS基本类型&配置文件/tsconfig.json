@@ -1,59 +1,65 @@
 {
-    /* 
+  /* 
         tsconfig.json是ts编译器的配置文件，tsc据此进行代码编译
     */
 
-    // 指定需要被编译的ts文件: 路径： ** 任意目录 * 任意文件
-    "include": ["./src/**/*"],
+  // 指定需要被编译的ts文件: 路径： ** 任意目录 * 任意文件
+  "include": [
+    "../../../01_basics/06_Typescript/01_TS基本类型&配置文件/src/**/*"
+  ],
 
-    // 不需要被编译的文件目录，默认值是["node_modules", "bower_components", "jspm_packages"]
-    "exclude": ["node_modules", "bower_components", "jspm_packages"],
+  // 不需要被编译的文件目录，默认值是["node_modules", "bower_components", "jspm_packages"]
+  "exclude": [
+    "../../../01_basics/06_Typescript/01_TS基本类型&配置文件/node_modules",
+    "../../../01_basics/06_Typescript/01_TS基本类型&配置文件/bower_components",
+    "../../../01_basics/06_Typescript/01_TS基本类型&配置文件/jspm_packages"
+  ],
 
-    // 编译器选项
-    "compilerOptions": {
-        // 指定编译版本，默认es3，可选'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'
-        "target": "ES2015",
+  // 编译器选项
+  "compilerOptions": {
+    // 指定编译版本，默认es3，可选'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022', 'esnext'
+    "target": "ES2015",
 
-        // 指定要使用的模块化规范
-        "module": "CommonJS",
+    // 指定要使用的模块化规范
+    "module": "CommonJS",
 
-        // 指定要使用的库
-        "lib": ["DOM", "ES6"],
+    // 指定要使用的库
+    "lib": ["DOM", "ES6"],
 
-        // 指定编译后文件目录
-        "outDir": "./dist",
+    // 指定编译后文件目录
+    "outDir": "../../../01_basics/06_Typescript/01_TS基本类型&配置文件/dist",
 
-        // 所有全局作用域代码会合并到同一个文件中
-        // "outFile": "./dist/app.js"
+    // 所有全局作用域代码会合并到同一个文件中
+    // "outFile": "./dist/app.js"
 
-        // 是否对js文件进行编译，默认false
-        "allowJs": true,
+    // 是否对js文件进行编译，默认false
+    "allowJs": true,
 
-        // 是否检查js代码符合语法规范，默认false
-        "checkJs": true,
+    // 是否检查js代码符合语法规范，默认false
+    "checkJs": true,
 
-        // 是否移除注释，默认false
-        "removeComments": true,
+    // 是否移除注释，默认false
+    "removeComments": true,
 
-        // 不生成编译后文件，默认false
-        "noEmit": true,
+    // 不生成编译后文件，默认false
+    "noEmit": true,
 
-        // 有错误时不生成编译后文件，默认false
-        "noEmitOnError": true,
+    // 有错误时不生成编译后文件，默认false
+    "noEmitOnError": true,
 
-        // 所有严格检查总开关，设置为true后，下面这些严格检查的细分项相当于全部设置为true，就可以不写了
-        "strict": false,
+    // 所有严格检查总开关，设置为true后，下面这些严格检查的细分项相当于全部设置为true，就可以不写了
+    "strict": false,
 
-        // 设置编译后文件是否使用严格模式，默认false
-        "alwaysStrict": true,
+    // 设置编译后文件是否使用严格模式，默认false
+    "alwaysStrict": true,
 
-        // 不允许隐式any类型
-        "noImplicitAny": true,
+    // 不允许隐式any类型
+    "noImplicitAny": true,
 
-        // 不允许不明确类型的this
-        "noImplicitThis": true,
+    // 不允许不明确类型的this
+    "noImplicitThis": true,
 
-        // 严格检查空值
-        "strictNullChecks": true
-    }
+    // 严格检查空值
+    "strictNullChecks": true
+  }
 }
