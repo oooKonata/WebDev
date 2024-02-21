@@ -1,25 +1,25 @@
 <template>
   <div class="person">
     <h2>需求：当水温达到60度，或水位达到80cm时，给服务器发请求</h2>
-    <h2>当前水温：{{temp}}℃</h2>
-    <h2>当前水位：{{height}}cm</h2>
+    <h2>当前水温：{{ temp }}℃</h2>
+    <h2>当前水位：{{ height }}cm</h2>
     <button @click="changeTemp">水温+10</button>
     <button @click="changeHeight">水位+10</button>
   </div>
 </template>
 
 <script lang="ts" setup name="Person">
-  import {ref,watch,watchEffect} from 'vue'
+  import { ref, watch, watchEffect } from 'vue'
 
   // 数据
   let temp = ref(10)
   let height = ref(0)
 
   // 方法
-  function changeTemp(){
+  function changeTemp() {
     temp.value += 10
   }
-  function changeHeight(){
+  function changeHeight() {
     height.value += 10
   }
 
@@ -34,15 +34,14 @@
   }) */
 
   // 监视 -- watchEffect实现
-  watchEffect(()=>{
-    if(temp.value >= 60 || height.value >= 80){
+  watchEffect(() => {
+    if (temp.value >= 60 || height.value >= 80) {
       console.log('给服务器发请求')
     }
   })
-
 </script>
 
-<style scoped>
+<style scoped scss>
   .person {
     background-color: skyblue;
     box-shadow: 0 0 10px;
