@@ -133,7 +133,7 @@
     console.log(person, prevPerson)
   })
 
-  // 4、
+  // 4、侦听ref或reactive对象类型里的某个属性
   let hobby = reactive({
     type: 'game',
     game: {
