@@ -32,6 +32,11 @@
     <button @click="changLol">Lol+2</button>
 
     <h2>侦听上述多个数据</h2>
+    <div>停止侦听</div>
+    <button @click="stop">停止侦听多个数据</button>
+
+    <h2>watchEffect</h2>
+    <div>立即运行一个函数，同时响应式地追踪其依赖，并在依赖更改时重新执行</div>
   </div>
 </template>
 
@@ -51,7 +56,7 @@ watch()默认是懒侦听的，即仅在侦听源发生变化时才执行回调�
     4、flush：调整回调函数的刷新时机
     5、onTrack / onTrigger：调试侦听器的依赖
 */
-  import { ref, reactive, watch } from 'vue'
+  import { ref, reactive, watch, watchEffect } from 'vue'
 
   // 1、侦听ref基本类型
   let sum = ref(0)
@@ -185,7 +190,7 @@ watch()默认是懒侦听的，即仅在侦听源发生变化时才执行回调�
   )
 
   // 5、侦听上述多个数据
-  watch(
+  const stopWatch = watch(
     // 需要被侦听的数据，放在数组里即可
     [sum, () => person.pets.cat, () => hobby.game.zelda],
     (val, prevVal) => {
@@ -195,6 +200,25 @@ watch()默认是懒侦听的，即仅在侦听源发生变化时才执行回调�
       deep: true,
     }
   )
+  // 停止侦听器
+  function stop() {
+    console.log('侦听多个数据的侦听器关闭了')
+    stopWatch()
+  }
+
+  // 补充watchEffect
+  /* 
+    立即运行一个函数，同时响应式地追踪其依赖，并在依赖更改时重新执行
+    watch与watchEffect对比
+      1、都能侦听数据变化，侦听方式不同
+      2、watch：需明确指明需要被侦听的数据
+      3、watchEffect：不需明确指明需要被侦听的数据（函数中用到哪些属性，就会侦听哪些属性）
+  */
+  watchEffect(() => {
+    if (sum.value >= 6 || hobby.game.lol >= 10) {
+      console.log('111', sum.value, hobby.game.lol)
+    }
+  })
 </script>
 
 <style scoped lang="scss">
