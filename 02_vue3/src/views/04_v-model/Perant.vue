@@ -1,5 +1,5 @@
 <template>
-  <div class="father">
+  <div class="Perant">
     <h3>父组件</h3>
     <h4>{{ username }}</h4>
     <h4>{{ password }}</h4>
@@ -15,12 +15,12 @@
     /> -->
 
     <!-- 修改modelValue -->
-    <AtguiguInput v-model:ming="username" v-model:mima="password"/>
+    <AtguiguInput v-model:ming="username" v-model:mima="password" />
   </div>
 </template>
 
-<script setup lang="ts" name="Father">
-	import { ref } from "vue";
+<script setup lang="ts" name="Perant">
+  import { ref } from 'vue'
   import AtguiguInput from './AtguiguInput.vue'
   // 数据
   let username = ref('zhansgan')
@@ -28,9 +28,9 @@
 </script>
 
 <style scoped>
-.father {
-  padding: 20px;
-  background-color: rgb(165, 164, 164);
-  border-radius: 10px;
-}
+  .Perant {
+    padding: 20px;
+    background-color: rgb(165, 164, 164);
+    border-radius: 10px;
+  }
 </style>

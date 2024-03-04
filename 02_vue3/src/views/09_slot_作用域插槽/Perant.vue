@@ -1,5 +1,5 @@
 <template>
-  <div class="father">
+  <div class="Perant">
     <h3>父组件</h3>
     <div class="content">
       <Game>
@@ -23,21 +23,20 @@
       </Game>
 
       <Game>
-        <template #default="{youxi}">
+        <template #default="{ youxi }">
           <h3 v-for="g in youxi" :key="g.id">{{ g.name }}</h3>
         </template>
       </Game>
-
     </div>
   </div>
 </template>
 
-<script setup lang="ts" name="Father">
+<script setup lang="ts" name="Perant">
   import Game from './Game.vue'
 </script>
 
 <style scoped>
-  .father {
+  .Perant {
     background-color: rgb(165, 164, 164);
     padding: 20px;
     border-radius: 10px;
@@ -46,7 +45,9 @@
     display: flex;
     justify-content: space-evenly;
   }
-  img,video {
+  img,
+  video {
     width: 100%;
   }
 </style>
+./Perant.vue

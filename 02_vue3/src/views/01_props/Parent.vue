@@ -1,5 +1,5 @@
 <template>
-  <div class="father">
+  <div class="parent">
     <div class="title">父组件</div>
     <div>汽车：{{ car }}</div>
     <div v-show="toy">子给的玩具：{{ toy }}</div>
@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Father">
+<script setup lang="ts" name="Parent">
   import Child from './Child.vue'
   import { ref } from 'vue'
   /* 
@@ -28,7 +28,7 @@
 </script>
 
 <style scoped lang="scss">
-  .father {
+  .parent {
     .title {
       font-size: 20px;
       font-weight: 900;

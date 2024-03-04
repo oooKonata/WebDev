@@ -4,7 +4,7 @@
     <div>玩具：{{ toy }}</div>
     <!-- 父组件传递过来的car和sendToy() -->
     <div>父给的车：{{ car }}</div>
-    <button @click="sendToy(toy)">把玩具给父亲</button>
+    <button @click="sendToy(toy)">把玩具给父组件</button>
   </div>
 </template>
 
