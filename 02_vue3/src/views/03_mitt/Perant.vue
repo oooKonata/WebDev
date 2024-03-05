@@ -1,6 +1,6 @@
 <template>
-  <div class="Perant">
-    <h3>父组件</h3>
+  <div class="parent">
+    <div class="title">父组件</div>
     <Child1 />
     <Child2 />
   </div>
@@ -11,13 +11,20 @@
   import Child2 from './Child2.vue'
 </script>
 
-<style scoped>
-  .Perant {
-    background-color: rgb(165, 164, 164);
+<style scoped lang="scss">
+  .parent {
+    .title {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .child1,
+    .child2 {
+      margin-top: 20px;
+    }
+    background-color: #f5f5f5;
     padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 10px;
-  }
-  .Perant button {
-    margin-left: 5px;
   }
 </style>

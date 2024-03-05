@@ -3,9 +3,7 @@
     <div class="title">父组件</div>
     <div>汽车：{{ car }}</div>
     <div v-show="toy">子给的玩具：{{ toy }}</div>
-    <div class="child">
-      <Child :car="car" :sendToy="getToy" />
-    </div>
+    <Child :car="car" :sendToy="getToy" />
   </div>
 </template>
 
