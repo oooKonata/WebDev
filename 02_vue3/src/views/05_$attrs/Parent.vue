@@ -1,10 +1,10 @@
 <template>
   <div class="parent">
-    <h3>父组件</h3>
-    <h4>a：{{ a }}</h4>
-    <h4>b：{{ b }}</h4>
-    <h4>c：{{ c }}</h4>
-    <h4>d：{{ d }}</h4>
+    <div class="title">父组件</div>
+    <div>a：{{ a }}</div>
+    <div>b：{{ b }}</div>
+    <div>c：{{ c }}</div>
+    <div>d：{{ d }}</div>
     <Child
       :a="a"
       :b="b"
@@ -30,10 +30,16 @@
   }
 </script>
 
-<style scoped>
-  .Parent {
-    background-color: rgb(165, 164, 164);
+<style scoped lang="scss">
+  .parent {
+    .title {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    background-color: #f5f5f5;
     padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 10px;
   }
 </style>

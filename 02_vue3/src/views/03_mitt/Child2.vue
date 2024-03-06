@@ -36,6 +36,7 @@
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 10px;
+    margin-top: 20px;
     button {
       font-size: 14px;
       margin: 16px 5px 0 0;

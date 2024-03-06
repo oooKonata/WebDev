@@ -24,6 +24,7 @@
       font-weight: 900;
       margin-bottom: 16px;
     }
+    margin-top: 20px;
     background-color: #ddd;
     border: 1px solid #ccc;
     padding: 20px;

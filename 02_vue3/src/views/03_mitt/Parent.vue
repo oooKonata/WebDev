@@ -18,10 +18,6 @@
       font-weight: 900;
       margin-bottom: 16px;
     }
-    .child1,
-    .child2 {
-      margin-top: 20px;
-    }
     background-color: #f5f5f5;
     padding: 20px;
     border: 1px solid #ccc;
