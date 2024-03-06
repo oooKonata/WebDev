@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Props from '@/views/01_props/Parent.vue'
 import Event from '@/views/02_custom-event/Parent.vue'
-import Bus from '@/views/03_mitt/Perant.vue'
-import Model from '@/views/04_v-model/Perant.vue'
-import AttrsListeners from '@/views/05_$attrs/Perant.vue'
-import RefChildrenParent from '@/views/06_$refs-$parent/Perant.vue'
-import ProvideInject from '@/views/07_provide-inject/Perant.vue'
-import Pinia from '@/views/08_pinia/Perant.vue'
-import Slot from '@/views/09_slot/Perant.vue'
+import Bus from '@/views/03_mitt/Parent.vue'
+import Model from '@/views/04_v-model/Parent.vue'
+import AttrsListeners from '@/views/05_$attrs/Parent.vue'
+import RefChildrenParent from '@/views/06_$refs-$parent/Parent.vue'
+import ProvideInject from '@/views/07_provide-inject/Parent.vue'
+import Pinia from '@/views/08_pinia/Parent.vue'
+import Slot from '@/views/09_slot/Parent.vue'
 
 export default createRouter({
   history: createWebHistory(),

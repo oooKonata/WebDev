@@ -1,5 +1,5 @@
 <template>
-  <div class="Perant">
+  <div class="Parent">
     <h3>父组件</h3>
     <h4>银子：{{ money }}万元</h4>
     <h4>车子：一辆{{ car.brand }}车，价值{{ car.price }}万元</h4>
@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Perant">
+<script setup lang="ts" name="Parent">
   import Child from './Child.vue'
   import { ref, reactive, provide } from 'vue'
 
@@ -26,7 +26,7 @@
 </script>
 
 <style scoped>
-  .Perant {
+  .Parent {
     background-color: rgb(165, 164, 164);
     padding: 20px;
     border-radius: 10px;

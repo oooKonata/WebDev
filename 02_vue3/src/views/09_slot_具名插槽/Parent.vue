@@ -1,23 +1,40 @@
 <template>
-  <div class="Perant">
+  <div class="Parent">
     <h3>父组件</h3>
     <div class="content">
-      <Category title="热门游戏列表">
-        <ul>
-          <li v-for="g in games" :key="g.id">{{ g.name }}</li>
-        </ul>
+      <Category>
+        <template v-slot:s2>
+          <ul>
+            <li v-for="g in games" :key="g.id">{{ g.name }}</li>
+          </ul>
+        </template>
+        <template v-slot:s1>
+          <h2>热门游戏列表</h2>
+        </template>
       </Category>
-      <Category title="今日美食城市">
-        <img :src="imgUrl" alt="" />
+
+      <Category>
+        <template v-slot:s2>
+          <img :src="imgUrl" alt="" />
+        </template>
+        <template v-slot:s1>
+          <h2>今日美食城市</h2>
+        </template>
       </Category>
-      <Category title="今日影视推荐">
-        <video :src="videoUrl" controls></video>
+
+      <Category>
+        <template #s2>
+          <video video :src="videoUrl" controls></video>
+        </template>
+        <template #s1>
+          <h2>今日影视推荐</h2>
+        </template>
       </Category>
     </div>
   </div>
 </template>
 
-<script setup lang="ts" name="Perant">
+<script setup lang="ts" name="Parent">
   import Category from './Category.vue'
   import { ref, reactive } from 'vue'
 
@@ -32,7 +49,7 @@
 </script>
 
 <style scoped>
-  .Perant {
+  .Parent {
     background-color: rgb(165, 164, 164);
     padding: 20px;
     border-radius: 10px;
@@ -44,5 +61,11 @@
   img,
   video {
     width: 100%;
+  }
+  h2 {
+    background-color: orange;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
   }
 </style>

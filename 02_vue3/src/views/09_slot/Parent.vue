@@ -1,5 +1,5 @@
 <template>
-  <div class="Perant">
+  <div class="Parent">
     <h3>父组件</h3>
     <div class="content">
       <Game>
@@ -31,12 +31,12 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Perant">
+<script setup lang="ts" name="Parent">
   import Game from './Game.vue'
 </script>
 
 <style scoped>
-  .Perant {
+  .Parent {
     background-color: rgb(165, 164, 164);
     padding: 20px;
     border-radius: 10px;

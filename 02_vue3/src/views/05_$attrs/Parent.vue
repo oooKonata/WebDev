@@ -1,5 +1,5 @@
 <template>
-  <div class="Perant">
+  <div class="parent">
     <h3>父组件</h3>
     <h4>a：{{ a }}</h4>
     <h4>b：{{ b }}</h4>
@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Perant">
+<script setup lang="ts" name="Parent">
   import Child from './Child.vue'
   import { ref } from 'vue'
 
@@ -31,7 +31,7 @@
 </script>
 
 <style scoped>
-  .Perant {
+  .Parent {
     background-color: rgb(165, 164, 164);
     padding: 20px;
     border-radius: 10px;

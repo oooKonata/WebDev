@@ -1,5 +1,5 @@
 <template>
-  <div class="Perant">
+  <div class="parent">
     <h3>父组件</h3>
     <h4>房产：{{ house }}</h4>
     <button @click="changeToy">修改Child1的玩具</button>
@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Perant">
+<script setup lang="ts" name="Parent">
   import Child1 from './Child1.vue'
   import Child2 from './Child2.vue'
   import { ref, reactive } from 'vue'
@@ -50,13 +50,13 @@
 </script>
 
 <style scoped>
-  .Perant {
+  .Parent {
     background-color: rgb(165, 164, 164);
     padding: 20px;
     border-radius: 10px;
   }
 
-  .Perant button {
+  .Parent button {
     margin-bottom: 10px;
     margin-left: 10px;
   }

@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Perant">
+<script setup lang="ts" name="Parent">
   import Child1 from './Child1.vue'
   import Child2 from './Child2.vue'
 </script>
