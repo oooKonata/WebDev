@@ -3,7 +3,6 @@
     <div class="title">孙组件</div>
     <div>a：{{ a }}</div>
     <div>b：{{ b }}</div>
-    <div>c：{{ c }}</div>
     <div>d：{{ d }}</div>
     <div>x：{{ x }}</div>
     <div>y：{{ y }}</div>
@@ -12,7 +11,7 @@
 </template>
 
 <script setup lang="ts" name="GrandChild">
-  defineProps(['a', 'b', 'c', 'd', 'x', 'y', 'updateA'])
+  defineProps(['a', 'b', 'd', 'x', 'y', 'updateA'])
 </script>
 
 <style scoped>
