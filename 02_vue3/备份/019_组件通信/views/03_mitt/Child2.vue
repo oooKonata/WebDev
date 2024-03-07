@@ -2,22 +2,27 @@
   <div class="child2">
     <div class="title">子组件2</div>
     <div>电脑：{{ computer }}</div>
-    <div>书籍：{{ book }} 本</div>
-    <button @click="addHouse($parent)">给父组件买1套房</button>
+    <div v-show="toy">哥哥给的玩具：{{ toy }}</div>
+    <!-- 触发事件，并将数据传递给自定义事件send-computer -->
+    <button @click="emitter.emit('send-computer', computer)">电脑给哥哥</button>
   </div>
 </template>
 
 <script setup lang="ts" name="Child2">
-  import { ref } from 'vue'
+  import { ref, onUnmounted } from 'vue'
+  import emitter from '@/utils/emitter'
   // 数据
   let computer = ref('联想')
-  let book = ref(6)
-  // 方法
-  function addHouse(parent: any) {
-    parent.house += 1
-  }
-  // 把数据交给外部
-  defineExpose({ computer, book })
+  let toy = ref('')
+
+  // 给emitter绑定send-toy事件，并接收自定义事件传递过来的数据
+  emitter.on('send-toy', (value: any) => {
+    toy.value = value
+  })
+  // 在组件卸载时解绑send-toy事件
+  onUnmounted(() => {
+    emitter.off('send-toy')
+  })
 </script>
 
 <style scoped lang="scss">
@@ -27,11 +32,11 @@
       font-weight: 900;
       margin-bottom: 16px;
     }
-    margin-top: 20px;
     background-color: #ddd;
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 10px;
+    margin-top: 20px;
     button {
       font-size: 14px;
       margin: 16px 5px 0 0;

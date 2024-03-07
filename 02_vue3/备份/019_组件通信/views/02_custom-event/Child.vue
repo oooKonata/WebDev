@@ -1,29 +1,24 @@
 <template>
-  <div class="child1">
-    <div class="title">子组件1</div>
+  <div class="child">
+    <div class="title">子组件</div>
     <div>玩具：{{ toy }}</div>
-    <div>书籍：{{ book }} 本</div>
-    <button @click="minusHouse($parent)">干掉父亲的1套房</button>
+    <!-- 使用emit触发自定义事件，后面为传给自定义事件的数据，可以为任意类型 -->
+    <button @click="emit('send-toy', toy, 'test', 18, ['a', 'b', { c: 9 }])">
+      把玩具给父组件
+    </button>
   </div>
 </template>
 
-<script setup lang="ts" name="Child1">
+<script setup lang="ts" name="Child">
   import { ref } from 'vue'
   // 数据
   let toy = ref('奥特曼')
-  let book = ref(3)
-
-  // 方法
-  function minusHouse(parent: any) {
-    parent.house -= 1
-  }
-
-  // 把数据交给外部
-  defineExpose({ toy, book })
+  // 声明事件，接收父组件传入的自定义事件
+  const emit = defineEmits(['send-toy'])
 </script>
 
 <style scoped lang="scss">
-  .child1 {
+  .child {
     .title {
       font-size: 20px;
       font-weight: 900;

@@ -1,11 +1,15 @@
 <template>
   <div class="parent">
     <div class="title">父组件</div>
-    <div>参考"@/备份/018_pinia"</div>
+    <Child1 />
+    <Child2 />
   </div>
 </template>
 
-<script setup lang="ts" name="Parent"></script>
+<script setup lang="ts" name="Parent">
+  import Child1 from './Child1.vue'
+  import Child2 from './Child2.vue'
+</script>
 
 <style scoped lang="scss">
   .parent {

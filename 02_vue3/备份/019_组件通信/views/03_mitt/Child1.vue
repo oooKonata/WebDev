@@ -2,24 +2,27 @@
   <div class="child1">
     <div class="title">子组件1</div>
     <div>玩具：{{ toy }}</div>
-    <div>书籍：{{ book }} 本</div>
-    <button @click="minusHouse($parent)">干掉父亲的1套房</button>
+    <div v-show="computer">弟弟给的电脑：{{ computer }}</div>
+    <!-- 触发事件，并将数据传递给自定义事件send-toy -->
+    <button @click="emitter.emit('send-toy', toy)">玩具给弟弟</button>
   </div>
 </template>
 
 <script setup lang="ts" name="Child1">
-  import { ref } from 'vue'
+  import { ref, onUnmounted } from 'vue'
+  import emitter from '@/utils/emitter'
+
   // 数据
   let toy = ref('奥特曼')
-  let book = ref(3)
-
-  // 方法
-  function minusHouse(parent: any) {
-    parent.house -= 1
-  }
-
-  // 把数据交给外部
-  defineExpose({ toy, book })
+  let computer = ref('')
+  // 给emitter绑定send-computer事件，并接收自定义事件传递过来的数据
+  emitter.on('send-computer', (value: any) => {
+    computer.value = value
+  })
+  // 在组件卸载时解绑send-computer事件
+  onUnmounted(() => {
+    emitter.off('send-computer')
+  })
 </script>
 
 <style scoped lang="scss">

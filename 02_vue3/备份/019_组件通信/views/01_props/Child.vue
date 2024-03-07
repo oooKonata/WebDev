@@ -1,33 +1,28 @@
 <template>
-  <div class="child2">
-    <div class="title">子组件2</div>
-    <div>电脑：{{ computer }}</div>
-    <div>书籍：{{ book }} 本</div>
-    <button @click="addHouse($parent)">给父组件买1套房</button>
+  <div class="child">
+    <div class="title">子组件</div>
+    <div>玩具：{{ toy }}</div>
+    <!-- 父组件传递过来的car和sendToy() -->
+    <div>父给的车：{{ car }}</div>
+    <button @click="sendToy(toy)">把玩具给父组件</button>
   </div>
 </template>
 
-<script setup lang="ts" name="Child2">
+<script setup lang="ts" name="Child">
   import { ref } from 'vue'
   // 数据
-  let computer = ref('联想')
-  let book = ref(6)
-  // 方法
-  function addHouse(parent: any) {
-    parent.house += 1
-  }
-  // 把数据交给外部
-  defineExpose({ computer, book })
+  let toy = ref('奥特曼')
+  // 声明接收props，props接收的属性或方法在模版中可以直接使用
+  defineProps(['car', 'sendToy'])
 </script>
 
 <style scoped lang="scss">
-  .child2 {
+  .child {
     .title {
       font-size: 20px;
       font-weight: 900;
       margin-bottom: 16px;
     }
-    margin-top: 20px;
     background-color: #ddd;
     border: 1px solid #ccc;
     padding: 20px;
